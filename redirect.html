@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LHIN APR</title>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h2>LHIN APR</h2>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-8 shadow p-4">
+				<!-- <div class="row pl-3">
+					<div class="col-3 text-center">											
+						<span class="opt opt-disable">1</span>
+						<br>
+						<p>LHIN And Service Selection</p>
+					</div>
+					<div class="col-3 text-center">							
+						<span class="opt opt-disable">2</span>
+						<br>
+						<p>Report Type</p>
+					</div>						
+					<div class="col-3 text-center">	
+						<span class="opt opt-disable">3</span>
+						<br>
+						<p>Additional Information</p>
+					</div>
+				</div> -->
+				<!-- LHIN FORM -->
+				<!-- <form>
+					<div class="form-group">
+						<label class="font-weight-bold">Select LHIN</label>
+						<select class="form-control col-4">
+							<option disabled selected>Select</option>
+							<option value="1">Nursing</option>
+							<option value="2">Nursing Wound</option>
+							<option value="3">Therapy</option>
+						</select>
+					</div>
+					<input type="submit" name="submit" value="Next" class="btn btn-info">
+				</form> -->
+				<!-- type FORM -->
+				<form id="form">
+					<label class="font-weight-bold h4">Nursing</label>
+					<div class="form-group">
+						<label class="font-weight-bold">Type</label>
+						<select class="form-control col-4" id="type">
+							<option disabled selected>Select</option>
+							<option value="initial">Initial</option>
+							<option value="interim">Interim</option>
+							<option value="discharge">Discharge</option>
+							<option value="change in status">Change In Status</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold">Urgency</label>
+						<select class="form-control col-4">
+							<option disabled selected>Select</option>
+							<option value="urgent">Urgent</option>
+							<option value="not urgent">Not Urgent</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold">Report Name</label>
+						<select class="form-control col-4">
+							<option disabled selected>Select</option>
+							<option value="nursing">Nursing</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold">Subcutaneous Pathway</label>
+						<select class="form-control col-4">
+							<option disabled selected>Select</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="font-weight-bold">Plan towards discharg</label>
+						<select class="form-control col-4" id="ptd">
+							<option disabled selected>Select</option>
+							<option value="client">Client</option>
+							<option value="caregiver">Caregiver</option>
+							<option value="other">Other</option>
+						</select>
+            <div id="caregiver">
+              <input type="text" name="caregiver_name" placeholder="Enter Caregiver Name" class="form-control mt-4 col-5">
+            </div>
+					</div>
+          <div id="discharg">
+  					<div class="form-group">
+  						<label class="font-weight-bold">Goals Met:</label>
+  						<select class="form-control col-4" id="GoalMet">
+  							<option disabled selected>Select</option>
+  							<option value="yes">Yes</option>
+  							<option value="no">No</option>
+  						</select>
+            <div id="noGoal">
+              <input type="text" name="nogoal_desc" placeholder="Please say details" class="form-control mt-4 col-5">
+            </div>              
+  					</div>
+  					<div class="form-group">
+  						<label class="font-weight-bold">Discharged To:</label>
+  						<select class="form-control col-4">
+  							<option disabled selected>Select</option>
+  							<option value="self care">Self Care</option>
+  							<option value="family">Family</option>
+  							<option value="hospital">Hospital</option>
+  							<option value="ltch">LTCH</option>
+  							<option value="deceased">Deceased</option>
+  							<option value="clinic">Clinic</option>
+  							<option value="other">Other</option>
+  						</select>
+  					</div>
+  					<div class="form-group">
+  						<label class="font-weight-bold">Last Visit Date:</label>
+  						<input type="Date" name="last_visit" class="form-control col-4" id="datePicker">
+  					</div>
+  					<div class="form-group">
+  						<label class="font-weight-bold">Discharge Date:</label>
+  						<input type="Date" name="discharg_date" class="form-control col-4" id="datePicker2">
+  					</div>
+          </div>					
+					<input type="submit" name="submit" value="Next" class="btn btn-info">
+				</form>
+			</div>
+		</div>
+	</div>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

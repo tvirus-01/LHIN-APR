@@ -1,0 +1,43 @@
+html, body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	margin: 0;
+	min-height: 180px;
+	padding: 0;
+	width: 100%;
+}
+
+h1{
+	font-family: 'Menlo', monospace;
+	font-size: 22px;
+	font-weight: 400;
+	margin: 0;
+	color: #3773f1;
+}
+
+a:link, a:visited {
+	color: red;
+	outline: 0;
+	text-decoration: none;
+}
+.img-logo{
+	width: 80px;
+}
+
+.exx{
+	border: solid 2px red
+}
+
+.opt-disable{
+	background-color: #96929a;
+}
+.opt-active{
+	background-color: #007bff;
+}
+.opt{
+	text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 20px;
+}
