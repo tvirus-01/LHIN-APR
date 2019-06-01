@@ -128,7 +128,7 @@
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Report Name *</label>
-                <select class="form-control  4" id="report_name">
+                <select class="form-control  4" id="report_name_therapy">
                   <option value="nursing">Therapy</option>
                 </select>
               </div>
@@ -207,12 +207,12 @@
                 </select>
                 <span class="text-danger" id="GoalMet_therapy_error"></span>
                 <div id="noGoal">
-                  <input type="text" name="nogoal_desc" id="nogoal_desc" placeholder="Please say details" class="form-control mt-4  5">
+                  <input type="text" name="nogoal_desc" id="nogoal_desc_therapy" placeholder="Please say details" class="form-control mt-4  5">
                 </div>              
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Discharged To:</label>
-                <select class="form-control  4" id="discharged_to">
+                <select class="form-control  4" id="discharged_to_therapy">
                   <option value="0">Select</option>
                   <option value="self care">Self Care</option>
                   <option value="family">Family</option>
@@ -222,7 +222,7 @@
                   <option value="clinic">Clinic</option>
                   <option value="other">Other</option>
                 </select>
-                <span class="text-danger" id="discharged_to_error"></span>
+                <span class="text-danger" id="discharged_to_therapy_error"></span>
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Last Visit Date:</label>
@@ -230,12 +230,12 @@
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Total Number of Visits Completed:</label>
-                <input type="number" id="total_number_visits" class="form-control  4" placeholder="xx">
+                <input type="text" id="total_number_visits" class="form-control  4" placeholder="xx" maxlength="2">
                 <span class="text-danger" id="total_number_visits_error"></span>
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Discharge Date:</label>
-                <input type="Date" name="discharg_date" class="form-control  4" id="discharg_date_therapy">
+                <input type="Date" name="discharg_date_therapy" class="form-control  4" id="discharg_date_therapy">
               </div>            
               <div class="form-inline float-right">
                 <button type="button" id="btn_dis_prv_therapy" class="btn btn-secondary">Previous</button>
@@ -269,7 +269,7 @@
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Report Name *</label>
-                <select class="form-control  4" id="report_name">
+                <select class="form-control  4" id="report_name_wound">
                   <option value="nursing">Wound</option>
                 </select>
               </div>
@@ -391,7 +391,8 @@
                   <option value="13-14 moderate risk">13-14 moderate risk</option>
                   <option value="15-18 mild risk">15-18 mild risk</option>
                   <option value="19-23 no risk">19-23 no risk</option>
-                  <option value="N/A">N/A</option>
+                  <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                 </select>
                 <span class="text-danger" id="braden_error"></span>                 
               </div>
@@ -524,7 +525,7 @@
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Discharged To:</label>
-                <select class="form-control  4" id="discharged_to">
+                <select class="form-control  4" id="discharged_to_wound">
                   <option value="0">Select</option>
                   <option value="self care">Self Care</option>
                   <option value="family">Family</option>
@@ -534,7 +535,7 @@
                   <option value="clinic">Clinic</option>
                   <option value="other">Other</option>
                 </select>
-              <span class="text-danger" id="discharged_to_error"></span>
+              <span class="text-danger" id="discharged_to_wound_error"></span>
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Discharge Status<br><small class="text-info">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</small></label>
@@ -555,12 +556,12 @@
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Last Visit Date:</label>
-                <input type="Date" name="last_visit" class="form-control  4" id="last_visit">
+                <input type="Date" name="last_visit" class="form-control  4" id="last_visit_wound">
               <span class="text-danger" id="last_visit_error"></span>
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Discharge Date:</label>
-                <input type="Date" name="discharg_date" class="form-control  4" id="discharg_date">
+                <input type="Date" name="discharg_date" class="form-control  4" id="discharg_date_wound">
               <span class="text-danger" id="discharg_date_error"></span>
               </div>          
               <div class="form-inline float-right">
@@ -610,7 +611,7 @@
                 <span class="text-danger" id="subcutaneous_pathway_error"></span>
               </div>
               <div class="form-group">
-                <label class="font-weight-bold">Plan towards discharg *</label>
+                <label class="font-weight-bold">Plan towards discharge *</label>
                 <select class="form-control  4" id="ptd">
                   <option value="0">Select</option>
                   <option value="client">Client</option>
@@ -619,7 +620,7 @@
                 </select>
                 <span class="text-danger" id="ptd_error"></span>
                 <div id="caregiver">
-                  <input type="text" name="caregiver_name" id="caregiver_name" placeholder="Enter Caregiver Name" class="form-control mt-4  5">
+                  <input type="text" name="caregiver_name" id="caregiver_name" placeholder="" class="form-control mt-4  5">
                 <span class="text-danger" id="caregiver_name_error"></span>
                 </div>
               </div>
@@ -633,7 +634,7 @@
             </div>
 
             <!-- discharge -->
-            <div id="discharg_nursing" class="tab-pane fade">
+            <div id="discharg_nursing" class="tab-pane active">
               <label class="font-weight-bold h4 mb-2 text-center w-100">Discharge</label>
               <div class="form-group">
                 <label class="font-weight-bold">Goals Met:</label>
@@ -642,8 +643,11 @@
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
+                <span class="text-danger" id="GoalMet_error_nu"></span>
                 <div id="noGoal">
-                  <input type="text" name="nogoal_desc" id="nogoal_desc" placeholder="Please say details" class="form-control mt-4  5">
+                  <label class="font-weight-bold mt-4">Enter additional comments for goals</label>
+                  <input type="text" id="nogoal_desc" placeholder="Comments here" class="form-control">
+                  <span class="text-danger" id="nogoal_desc_error"></span>
                 </div>              
               </div>
               <div class="form-group">
@@ -739,7 +743,7 @@
 
             <!-- Stroke Pathway -->
             <!-- Stroke Pathway Therapy -->
-            <div class="tab-pane active" id="therapy_stroke">
+            <div class="tab-pane fade" id="therapy_stroke">
               <label class="font-weight-bold h4 mb-2 text-center w-100">Stroke Pathway</label>              
               <div class="form-group">
                 <label class="font-weight-bold">Is this patient on a stroke pathway and completed by *</label>
@@ -888,6 +892,7 @@
                   <div class="form-group ml-4">
                     <label>Attention</label>
                     <select class="form-control  4" id="func_commu_attention_ins">
+                      <option value="0">Select</option>
                       <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
@@ -903,11 +908,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_attention_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Memory</label>
                     <select class="form-control  4" id="func_commu_memory_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -922,11 +929,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_memory_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Motor Speech</label>
                     <select class="form-control  4" id="func_commu_motor_sp_ins">
-                      <option value="N/A">N/A</option>
+                    <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -941,11 +950,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_motor_sp_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Reading</label>
                     <select class="form-control  4" id="func_commu_read_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -960,11 +971,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_read_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Comprehension</label>
                     <select class="form-control  4" id="func_commu_splc_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -979,11 +992,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_splc_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Expression</label>
                     <select class="form-control  4" id="func_commu_sple_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -998,11 +1013,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_sple_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Swallowing</label>
                     <select class="form-control  4" id="func_commu_swall_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1017,11 +1034,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_swall_ins_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Writing</label>
                     <select class="form-control  4" id="func_commu_write_ins">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1036,6 +1055,7 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_write_ins_error"></span>
                   </div>
                 </div>
 
@@ -1044,7 +1064,8 @@
                   <div class="form-group ml-4">
                     <label>Attention</label>
                     <select class="form-control  4" id="func_commu_attention_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1059,11 +1080,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_attention_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Memory</label>
                     <select class="form-control  4" id="func_commu_memory_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1078,11 +1101,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_memory_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Motor Speech</label>
                     <select class="form-control  4" id="func_commu_motor_sp_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1097,11 +1122,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_motor_sp_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Reading</label>
                     <select class="form-control  4" id="func_commu_read_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1116,11 +1143,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_read_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Comprehension</label>
                     <select class="form-control  4" id="func_commu_splc_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1135,11 +1164,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_splc_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Expression</label>
                     <select class="form-control  4" id="func_commu_sple_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1154,11 +1185,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_sple_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Swallowing</label>
                     <select class="form-control  4" id="func_commu_swall_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1173,11 +1206,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_swall_gps_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Writing</label>
                     <select class="form-control  4" id="func_commu_write_gps">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1192,6 +1227,7 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_write_gps_error"></span>
                   </div>
                 </div>
                 
@@ -1200,7 +1236,8 @@
                   <div class="form-group ml-4">
                     <label>Attention</label>
                     <select class="form-control  4" id="func_commu_attention_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1215,11 +1252,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_attention_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Memory</label>
                     <select class="form-control  4" id="func_commu_memory_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1234,11 +1273,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_memory_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Motor Speech</label>
                     <select class="form-control  4" id="func_commu_motor_sp_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1253,11 +1294,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_motor_sp_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Reading</label>
                     <select class="form-control  4" id="func_commu_read_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1272,11 +1315,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_read_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Comprehension</label>
                     <select class="form-control  4" id="func_commu_splc_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1291,11 +1336,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_splc_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Expression</label>
                     <select class="form-control  4" id="func_commu_sple_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1310,11 +1357,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_sple_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Swallowing</label>
                     <select class="form-control  4" id="func_commu_swall_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1329,11 +1378,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_swall_int_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Writing</label>
                     <select class="form-control  4" id="func_commu_write_int">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1348,6 +1399,7 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_write_int_error"></span>
                   </div>
                 </div>
                 
@@ -1356,7 +1408,8 @@
                   <div class="form-group ml-4">
                     <label>Attention</label>
                     <select class="form-control  4" id="func_commu_attention_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1371,11 +1424,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_attention_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Memory</label>
                     <select class="form-control  4" id="func_commu_memory_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1390,11 +1445,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_memory_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Motor Speech</label>
                     <select class="form-control  4" id="func_commu_motor_sp_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1409,11 +1466,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_motor_sp_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Reading</label>
                     <select class="form-control  4" id="func_commu_read_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1428,11 +1487,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_read_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Comprehension</label>
                     <select class="form-control  4" id="func_commu_splc_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1447,11 +1508,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_splc_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Spoken Language Expression</label>
                     <select class="form-control  4" id="func_commu_sple_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1466,11 +1529,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_sple_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Swallowing</label>
                     <select class="form-control  4" id="func_commu_swall_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1485,11 +1550,13 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_swall_disc_error"></span>
                   </div>
                   <div class="form-group ml-4">
                     <label>Writing</label>
                     <select class="form-control  4" id="func_commu_write_disc">
-                      <option value="N/A">N/A</option>
+                      <option value="0">Select</option>
+                    <option value="N/A">N/A</option>
                       <option value="1">1</option>
                       <option value="1.5">1.5</option>
                       <option value="2">2</option>
@@ -1504,6 +1571,7 @@
                       <option value="6.5">6.5</option>
                       <option value="7">7</option>
                     </select>
+                    <span class="text-danger" id="func_commu_write_disc_error"></span>
                   </div>
                 </div>
                 <div class="form-group">
@@ -1524,23 +1592,29 @@
             <!-- additional info pane -->
             <!-- therapy wound -->
             <div class="tab-pane fade" id="additional_therapy">
-              <label class="font-weight-bold h4 mb-3 text-center w-100">Additional Information</label>  
-              <div class="form-group">
-                <label class="font-weight-bold">Additional Information</label>
-                <textarea class="form-control  6" rows="5" id="additional_info" placeholder="Additional Information"></textarea>
-                <span class="text-danger" id="error_additional_info"></span>
+              <div id="addi_th_part1">
+                <label class="font-weight-bold h4 mb-3 text-center w-100">Additional Information</label>  
+                <div class="form-group">
+                  <label class="font-weight-bold">Additional Information</label>
+                  <textarea class="form-control  6" rows="5" id="additional_info" placeholder="Additional Information"></textarea>
+                  <span class="text-danger" id="error_additional_info"></span>
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold">Name and Designation of Author: *</label>
+                  <textarea class="form-control  6" id="name_author" placeholder="Name and Designation of Author"></textarea>
+                  <span class="text-danger" id="error_name_author"></span>
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold">Phone + Extension of Author: *</label>
+                  <textarea class="form-control  6" id="phone_author" placeholder="Phone + Extension of Author:"></textarea>
+                  <span class="text-danger" id="error_phone_author"></span>
+                </div>
               </div>
-              <div class="form-group">
-                <label class="font-weight-bold">Name and Designation of Author: *</label>
-                <textarea class="form-control  6" id="name_author" placeholder="Name and Designation of Author"></textarea>
-                <span class="text-danger" id="error_name_author"></span>
+              <div id="addi_th_part2">
+                <label class="font-weight-bold h4 mb-3 text-center w-100">Additional Information</label> 
+                <label class="font-weight-bold text-info mt-3">This section is not required because you selected "Type of Pathway" Not Applicable</label>
               </div>
-              <div class="form-group">
-                <label class="font-weight-bold">Phone + Extension of Author: *</label>
-                <textarea class="form-control  6" id="phone_author" placeholder="Phone + Extension of Author:"></textarea>
-                <span class="text-danger" id="error_phone_author"></span>
-              </div>
-              <div class="form-inline float-right">
+              <div class="form-inline float-right mt-3">
                 <button type="button" id="btn_additional_1st_therapy" class="btn btn-dark">Back To 1st Step</button>
                 <button type="button" id="btn_additional_prv_therapy" class="btn btn-secondary ml-4">Previous</button>
                 <button type="button" id="btn_additional_submit_therapy" class="btn btn-info ml-4">Complete</button>
@@ -1660,7 +1734,7 @@
               <label class="font-weight-bold h4 mb-3 text-center w-100">Additional Information</label>
               <div class="form-group">
                 <label class="font-weight-bold">Additional Information</label>
-                <textarea name="additional_info" id="additional_info" class="form-control  6" rows="6" placeholder="Additonal Informations, report safety risk need for additional service etc.(optional)"></textarea>
+                <textarea name="additional_info" id="additional_info" class="form-control  6" rows="6" placeholder="Additonal Information, report safety risk need for additional service etc.(optional)"></textarea>
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Name and Designation of Author: *</label>
@@ -1690,6 +1764,9 @@
                   <option value="waste">Waste PICK UP</option>
                 </select>
                 <span class="text-danger" id="error_plan"></span>
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Equipment Details" class="form-control" id="equipment_details">
               </div>
               <div class="form-inline float-right">
                 <button type="button" id="btn_additional_1st" class="btn btn-dark">Back To 1st Step</button>
