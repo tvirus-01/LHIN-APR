@@ -56,6 +56,41 @@ $("#result_nd_comments").on("keyup",function(event){
 	cls = '.char_count0';
   checkTextAreaMaxLength(this,event,cls);
 });
+
+$("#rationale_restorative").on("keyup",function(event){
+	cls = '.char_count4';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$("#nogoal_desc_therapy").on("keyup",function(event){
+	cls = '.char_countng';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$("#nogoal_desc_wound").on("keyup",function(event){
+	cls = '.char_count_ngw';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$("#desc_ongoing").on("keyup",function(event){
+	cls = '.char_count_dss';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$("#location_wound").on("keyup",function(event){
+	cls = '.char_countlw';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$("#pt_comments").on("keyup",function(event){
+	cls = '.char_count54';
+  checkTextAreaMaxLength(this,event,cls);
+});
+
+$(".other_comments").on("keyup",function(event){
+	cls = '.char_count';
+  checkTextAreaMaxLength(this,event,cls);
+});
 $('#char_count1').hide();
 $('#char_count12').hide();
 
@@ -146,11 +181,30 @@ $('#equipment').change(function () {
 // });
 
 $("#noGoal").hide();
+$("#nogoal_desc_wound").hide();
+$("#nogoal_desc_therapy").hide();
+
 $("#GoalMet").change(function (){
 	if ($(this).val() == 'no') {
 		$("#noGoal").show();
 	} else {
 		$("#noGoal").hide();
+	}
+});
+
+$("#GoalMet_wound").change(function (){
+	if ($(this).val() == 'no' || $(this).val() == 'yes') {
+		$("#nogoal_desc_wound").show();
+	} else {
+		$("#nogoal_desc_wound").hide();
+	}
+});
+
+$("#GoalMet_therapy").change(function (){
+	if ($(this).val() == 'no') {
+		$("#nogoal_desc_therapy").show();
+	} else {
+		$("#nogoal_desc_therapy").hide();
 	}
 });
 
@@ -177,7 +231,8 @@ $("#protocol").change(function() {
 $("#desc_ongoing").hide();
 $("#discharge_status").change(function() {
 	/* Act on the event */
-	if ($(this).val() == '3') {
+	that = $(this).val();
+	if (that.indexOf('3') != -1) {
 		$("#desc_ongoing").show();
 	}else{
 		$("#desc_ongoing").hide();
@@ -709,7 +764,9 @@ $('#btn_dis_therapy').click(function() {
 	var GoalMet_therapy_error = '';
 	var discharged_to_therapy_error = '';
 	var total_number_visits_error = '';
+	var nogoal_desc_therapy_error = '';
 	var mssg = 'This field is required';
+	var mssgnn = 'This field is required.  Enter a number between 0 and 99';
 
 	if ($("#GoalMet_therapy").val() == 0) {
 		GoalMet_therapy_error = mssg;
@@ -717,6 +774,19 @@ $('#btn_dis_therapy').click(function() {
 	}else{
 		GoalMet_therapy_error = '';
 		$("#GoalMet_therapy_error").text(GoalMet_therapy_error);
+	}
+
+	if ($("#GoalMet_therapy").val() == 'no') {
+		if (!$("#nogoal_desc_therapy").val()) {
+			nogoal_desc_therapy_error = mssg;
+			$("#nogoal_desc_therapy_error").text(nogoal_desc_therapy_error);
+		}else{
+			nogoal_desc_therapy_error = '';
+			$("#nogoal_desc_therapy_error").text(nogoal_desc_therapy_error);
+		}
+	}else{		
+		nogoal_desc_therapy_error = '';
+		$("#nogoal_desc_therapy_error").text(nogoal_desc_therapy_error);
 	}
 
 	if ($("#discharged_to_therapy").val() == 0) {
@@ -728,11 +798,11 @@ $('#btn_dis_therapy').click(function() {
 	}
 
 	if (!$("#total_number_visits").val()) {
-		total_number_visits_error = mssg;
+		total_number_visits_error = mssgnn;
 		$("#total_number_visits_error").text(total_number_visits_error);
 	}else{
 		if (!$.isNumeric($("#total_number_visits").val())) {
-			total_number_visits_error = 'Enter a valid number';
+			total_number_visits_error = mssgnn;
 			$("#total_number_visits_error").text(total_number_visits_error);			
 		}else{
 			total_number_visits_error = '';
@@ -740,7 +810,7 @@ $('#btn_dis_therapy').click(function() {
 		}
 	}
 
-	if (GoalMet_therapy_error != '' || discharged_to_therapy_error != '' || total_number_visits_error != '') {
+	if (GoalMet_therapy_error != '' || discharged_to_therapy_error != '' || total_number_visits_error != '' || nogoal_desc_therapy_error != '') {
 		return false;
 	}else{
 		$('#therapy_restorative').removeClass('fade');
@@ -827,6 +897,9 @@ $('#btn_str_therapy').click(function() {
 	var mon_cog_assessment_error = '';
 	var can_occ_error = '';
 	var goal_attain_ot_error = '';
+	var result_nd_comments_moncog_error = '';
+	var result_nd_comments_canocc_error = '';
+	var result_nd_comments_goalatt_error = '';
 
 	// PT
 	var clinical_outcome_init_error = '';
@@ -835,6 +908,9 @@ $('#btn_str_therapy').click(function() {
 	var berg_balance_sc_error = '';
 	var time_up_go_error = '';
 	var goal_attain_pt_error = '';
+	var berg_balance_sc_comments_error = '';
+	var time_up_go_comments_error = '';
+	var goal_attain_ot_commnet_error = '';
 
 	// SLP
 	var func_commu_attention_ins_error = '';
@@ -874,7 +950,7 @@ $('#btn_str_therapy').click(function() {
 	var func_commu_write_disc_error = '';
 
 	var mssg = 'This field is required';
-	var mssgn = 'Numbers between 13-99';
+	var mssgn = ' Enter a number between 13-99';
 
 	if ($("#is_this_pat").val() == 0) {
 		is_this_pat_error = mssg;
@@ -885,12 +961,51 @@ $('#btn_str_therapy').click(function() {
 	}
 
 	// OT Section
-	if ($("#mon_cog_assessment").val() == 0) {
+		if ($("#mon_cog_assessment").val() == 0) {
 			mon_cog_assessment_error = mssg;
 			$("#mon_cog_assessment_error").text(mon_cog_assessment_error);
 		}else{
 			mon_cog_assessment_error = '';
 			$("#mon_cog_assessment_error").text(mon_cog_assessment_error);
+		}
+
+		if ($("#mon_cog_assessment").val() == 'yes') {
+			if(!$("#result_nd_comments_moncog").val()){
+				result_nd_comments_moncog_error = mssg;
+				$("#result_nd_comments_moncog_error").text(result_nd_comments_moncog_error);
+			}else{
+				result_nd_comments_moncog_error = '';
+				$("#result_nd_comments_moncog_error").text(result_nd_comments_moncog_error);
+			}
+		}else{
+			result_nd_comments_moncog_error = '';
+			$("#result_nd_comments_moncog_error").text(result_nd_comments_moncog_error);
+		}
+
+		if ($("#can_occ").val() == 'yes') {
+			if(!$("#result_nd_comments_canocc").val()){
+				result_nd_comments_canocc_error = mssg;
+				$("#result_nd_comments_canocc_error").text(result_nd_comments_canocc_error);
+			}else{
+				result_nd_comments_canocc_error = '';
+				$("#result_nd_comments_canocc_error").text(result_nd_comments_canocc_error);
+			}
+		}else{
+			result_nd_comments_canocc_error = '';
+			$("#result_nd_comments_canocc_error").text(result_nd_comments_canocc_error);
+		}
+
+		if ($("#goal_attain_ot").val() == 'yes') {
+			if(!$("#result_nd_comments_goalatt").val()){
+				result_nd_comments_goalatt_error = mssg;
+				$("#result_nd_comments_goalatt_error").text(result_nd_comments_goalatt_error);
+			}else{
+				result_nd_comments_goalatt_error = '';
+				$("#result_nd_comments_goalatt_error").text(result_nd_comments_goalatt_error);
+			}
+		}else{
+			result_nd_comments_goalatt_error = '';
+			$("#result_nd_comments_goalatt_error").text(result_nd_comments_goalatt_error);
 		}
 
 		if ($("#can_occ").val() == 0) {
@@ -942,6 +1057,45 @@ $('#btn_str_therapy').click(function() {
 		}else{
 			clinical_outcome_init_error = '';
 			$("#clinical_outcome_init_error").text(clinical_outcome_init_error);
+		}
+
+		if ($("#goal_attain_pt").val() == 'yes') {
+			if(!$("#goal_attain_ot_commnet").val()){
+				goal_attain_ot_commnet_error = mssg;
+				$("#goal_attain_ot_commnet_error").text(goal_attain_ot_commnet_error);
+			}else{
+				goal_attain_ot_commnet_error = '';
+				$("#goal_attain_ot_commnet_error").text(goal_attain_ot_commnet_error);
+			}
+		}else{
+			goal_attain_ot_commnet_error = '';
+			$("#goal_attain_ot_commnet_error").text(goal_attain_ot_commnet_error);
+		}
+
+		if ($("#time_up_go").val() == 'yes') {
+			if(!$("#time_up_go_comments").val()){
+				time_up_go_comments_error = mssg;
+				$("#time_up_go_comments_error").text(time_up_go_comments_error);
+			}else{
+				time_up_go_comments_error = '';
+				$("#time_up_go_comments_error").text(time_up_go_comments_error);
+			}
+		}else{
+			time_up_go_comments_error = '';
+			$("#time_up_go_comments_error").text(time_up_go_comments_error);
+		}
+
+		if ($("#berg_balance_sc").val() == 'yes') {
+			if(!$("#berg_balance_sc_comments").val()){
+				berg_balance_sc_comments_error = mssg;
+				$("#berg_balance_sc_comments_error").text(berg_balance_sc_comments_error);
+			}else{
+				berg_balance_sc_comments_error = '';
+				$("#berg_balance_sc_comments_error").text(berg_balance_sc_comments_error);
+			}
+		}else{
+			berg_balance_sc_comments_error = '';
+			$("#berg_balance_sc_comments_error").text(berg_balance_sc_comments_error);
 		}
 
 		if ($("#clinical_outcome_inter").val() > 99 || $("#clinical_outcome_inter").val() < 13) {
@@ -1356,7 +1510,7 @@ $('#btn_str_therapy').click(function() {
 			if ($("#is_this_pat").val() == 'OT') {
 			if(str_thrapppy == 'interim' || str_thrapppy == 'discharge' || str_thrapppy == 'change in status'){
 				if (str_thrapppy == 'discharge') {
-					if (modified_barthel_dischrage_error != '' || modified_barthel_interim_error != '' || modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '') {
+					if (modified_barthel_dischrage_error != '' || modified_barthel_interim_error != '' || modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '' || result_nd_comments_goalatt_error != '' || result_nd_comments_canocc_error != '' || result_nd_comments_moncog_error != '') {
 						return false;
 					}
 					else{					
@@ -1371,7 +1525,7 @@ $('#btn_str_therapy').click(function() {
 					}
 				}
 				else{
-					if (modified_barthel_interim_error != '' || modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '') {
+					if (modified_barthel_interim_error != '' || modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '' || result_nd_comments_goalatt_error != '' || result_nd_comments_canocc_error != '' || result_nd_comments_moncog_error != '') {
 						return false;
 					}
 					else{					
@@ -1387,7 +1541,7 @@ $('#btn_str_therapy').click(function() {
 				}
 			}
 			else{
-				if (modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '') {
+				if (modified_barthel_initial_error != '' || goal_attain_ot_error != '' || can_occ_error != '' || mon_cog_assessment_error != '' || result_nd_comments_goalatt_error != '' || result_nd_comments_canocc_error != '' || result_nd_comments_moncog_error != '') {
 					return false;
 				}
 				else{					
@@ -1407,7 +1561,7 @@ $('#btn_str_therapy').click(function() {
 			if ($("#is_this_pat").val() == 'PT') {
 			if(str_thrapppy == 'interim' || str_thrapppy == 'discharge' || str_thrapppy == 'change in status'){
 				if (str_thrapppy == 'discharge') {
-					if (clinical_outcome_disch_error != '' || clinical_outcome_inter_error != '' || clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '') {
+					if (clinical_outcome_disch_error != '' || clinical_outcome_inter_error != '' || clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '' || berg_balance_sc_comments_error != '' || time_up_go_comments_error != '' || goal_attain_ot_commnet_error != '') {
 						return false;
 					}
 					else{					
@@ -1422,7 +1576,7 @@ $('#btn_str_therapy').click(function() {
 					}
 				}
 				else{
-					if (clinical_outcome_inter_error != '' || clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '') {
+					if (clinical_outcome_inter_error != '' || clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '' || berg_balance_sc_comments_error != '' || time_up_go_comments_error != '' || goal_attain_ot_commnet_error != '') {
 						return false;
 					}
 					else{					
@@ -1438,7 +1592,7 @@ $('#btn_str_therapy').click(function() {
 				}
 			}
 			else{
-				if (clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '') {
+				if (clinical_outcome_init_error != '' || goal_attain_pt_error != '' || time_up_go_error != '' || berg_balance_sc_error != '' || berg_balance_sc_comments_error != '' || time_up_go_comments_error != '' || goal_attain_ot_commnet_error != '') {
 					return false;
 				}
 				else{					
@@ -1518,6 +1672,8 @@ $('#btn_str_therapy').click(function() {
 		}
 	}
 });
+
+// end of btn_str_therapy
 
 $('#btn_type_wound').click(function() {
 	/* Act on the event */
@@ -2070,6 +2226,7 @@ $('#btn_dis_prv_wound').click(function() {
 
 $('#btn_dis_wound').click(function() {
 	var physician_notified_error = '';
+	var nogoal_desc_wound_error = '';
 	var mssg = 'This field is required';
 
 	if (!$("#physician").val()) {
@@ -2095,6 +2252,19 @@ $('#btn_dis_wound').click(function() {
 		GoalMet_error = '';
 		$("#GoalMet_error").text(GoalMet_error);		
 	}
+
+	if ($("#GoalMet_wound").val() == 'no') {
+		if (!$("#nogoal_desc_wound").val()) {
+			nogoal_desc_wound_error = mssg;
+			$("#nogoal_desc_wound_error").text(nogoal_desc_wound_error);
+		}else{
+			nogoal_desc_wound_error = '';
+			$("#nogoal_desc_wound_error").text(nogoal_desc_wound_error);			
+		}
+	}else{		
+		nogoal_desc_wound_error = '';
+		$("#nogoal_desc_wound_error").text(nogoal_desc_wound_error);
+	}
 	
 	if ($("#discharged_to_wound").val() == 0) {
 		discharged_to_wound_error = mssg;
@@ -2104,7 +2274,7 @@ $('#btn_dis_wound').click(function() {
 		$("#discharged_to_wound_error").text(discharged_to_wound_error);		
 	}
 
-	if (physician_notified_error != '' || protocol_error != '' || GoalMet_error != '' || discharged_to_wound_error != '') {
+	if (physician_notified_error != '' || protocol_error != '' || GoalMet_error != '' || discharged_to_wound_error != '' || nogoal_desc_wound_error != '') {
 		return false;
 	}else{
 		$('#additional_wound').removeClass('fade');
@@ -2437,6 +2607,8 @@ $('#btn_additional_submit_wound').click(function() {
 	var error_nurse_nmndde = '';
 	var error_nurse_phn = '';
 	var error_plan = '';
+	var wound_care_complete_error = '';
+	var patient_has_care_error = '';
 	var mssg = 'This field is required';
 
 	if ($.trim($('#name_author_nw').val()).length == 0) {
@@ -2445,6 +2617,22 @@ $('#btn_additional_submit_wound').click(function() {
 	}else{
 		error_author_nmndde = '';
 		$('#error_author_nmndde_nw').text(error_author_nmndde);
+	}
+
+	if ($("#wound_care_complete").val() == 0) {
+		wound_care_complete_error = mssg;
+		$("#wound_care_complete_error").text(wound_care_complete_error);
+	}else{
+		wound_care_complete_error = '';
+		$("#wound_care_complete_error").text(wound_care_complete_error);		
+	}
+
+	if ($("#patient_has_care").val() == 0) {
+		patient_has_care_error = mssg;
+		$("#patient_has_care_error").text(patient_has_care_error);
+	}else{
+		patient_has_care_error = '';
+		$("#patient_has_care_error").text(patient_has_care_error);		
 	}
 
 	if ($.trim($('#phone_author_nw').val()).length == 0) {
@@ -2471,7 +2659,7 @@ $('#btn_additional_submit_wound').click(function() {
 		$('#error_nurse_phn_nw').text(error_nurse_phn);
 	}
 
-	if (error_plan != '' || error_author_nmndde != '' || error_author_phn != '' || error_nurse_nmndde != '' || error_nurse_phn != '') {
+	if (error_plan != '' || error_author_nmndde != '' || error_author_phn != '' || error_nurse_nmndde != '' || error_nurse_phn != '' || patient_has_care_error != '' || wound_care_complete_error != '') {
 		return false;
 	}else{
 		var lhin_sel = $("#lhin_sel").val();
@@ -2529,18 +2717,39 @@ $('#btn_additional_submit_wound').click(function() {
 		var name_nurse = $("#name_nurse_nw").val();		
 		var phone_nurse = $("#phone_nurse_nw").val();
 
-		var service_plan = '[LHIN:'+lhin_sel+', Type Of Service:'+select_lhin+', Type:'+type_sel+', Urgency:'+urgency+', Report Name:'+report_name+']\nType of Pathway:<'+type_of_pathway+'>Interventions Discussed:<'+interventions_discussed+'>Patient Readiness Assessment:<'+pra+'>Patient Readiness Assessment Reason:<'+pra_no+'>Wound Assessment Date:<'+wound_assessment+'>Location of Wound:<'+location_wound+'>Pain:<'+pain+'>Infection:<'+infection+'>Drainage:<'+drainage+'>Measurements: Length (cm):<'+measurements_length+'>Measurements: Width (cm):<'+measurements_width+'>Measurements: Depth (cm)::<'+measurements_depth+'>Percentage of Healing:<'+percentage_healing+'>Braden Scale:<'+braden+'>';
+
+		discharge_stat = '';
+		if (discharge_status.indexOf(1) != -1) {
+			discharge_stat += '<Teaching Materials Provided> '; 
+		}
+		if (discharge_status.indexOf(2) != -1) {
+			discharge_stat += '<Patient caregiver independent with wound care> '; 
+		}
+		if (discharge_status.indexOf(3) != -1) {
+			discharge_stat += '<Ongoing needs discussed> '; 
+		}
+		if (discharge_status.indexOf(4) != -1) {
+			discharge_stat += '<Self-Management> '; 
+		}
+		if (discharge_status.indexOf(5) != -1) {
+			discharge_stat += '<Patient assisted to access appropriate resources> '; 
+		}
+		if (discharge_status.indexOf(6) != -1) {
+			discharge_stat += '<Wound healed> '; 
+		}
+
+		var service_plan = '[LHIN:'+lhin_sel+', Type Of Service:'+select_lhin+', Type:'+type_sel+', Urgency:'+urgency+', Report Name:'+report_name+']\nType of Pathway:<'+type_of_pathway+'>Interventions Discussed:<'+interventions_discussed+'>Patient Readiness Assessment:<'+pra+'>Patient Readiness Assessment Reason:<'+pra_no+'>Wound Assessment Date:<'+wound_assessment+'>Location of Wound:<'+location_wound+'>Pain:<'+pain+'>Infection:<'+infection+'>Drainage:<'+drainage+'>Measurements: Length (cm):<'+measurements_length+'>Measurements: Width (cm):<'+measurements_width+'>Measurements: Depth (cm)::<'+measurements_depth+'>Percentage of Healing:<'+percentage_healing+'%>Braden Scale:<'+braden+'>';
 
 		if ($.trim(location_wound_2).length == 0) {
 			var output_service = service_plan;
 		}else{
-			var wound_2 = ' Wound#2<Wound Assessment Date :<'+wound_assessment_2+'>Location of Wound :<'+location_wound_2+'>Pain :<'+pain_2+'>Infection :<'+infection_2+'>Drainage :<'+drainage_2+'>Measurements: Length (cm) :<'+measurements_length_2+'>Measurements: Width (cm) :<'+measurements_width_2+'>Measurements: Depth (cm) :<'+measurements_depth_2+'>Percentage of Healing :<'+percentage_healing_2+'>Braden Scale :<'+braden_2+'>>';
+			var wound_2 = ' Wound#2<Wound Assessment Date :<'+wound_assessment_2+'>Location of Wound :<'+location_wound_2+'>Pain :<'+pain_2+'>Infection :<'+infection_2+'>Drainage :<'+drainage_2+'>Measurements: Length (cm) :<'+measurements_length_2+'>Measurements: Width (cm) :<'+measurements_width_2+'>Measurements: Depth (cm) :<'+measurements_depth_2+'>Percentage of Healing :<'+percentage_healing_2+'%>Braden Scale :<'+braden_2+'>>';
 
 			var output_service = service_plan + wound_2;
 		}
 
 		if (GoalMet == 'yes' || GoalMet == 'no') {
-			var discharg_field = 'Does Frequency Follow Wound Protocol?:<'+protocol+'>Frequency Protocol Comments:<'+protocol_no+'>Discharge Status:<'+discharge_status+'>Describe ongoing needs and recommendations:<'+desc_ongoing+'>Physician Notified of Discharge:<'+physician+'>Goals Met:<'+GoalMet+'><'+nogoal_desc+'>Discharged To:<'+discharged_to+'>Last Visit Date:<'+last_visit+'>Discharge Date:<'+discharg_date+'>';
+			var discharg_field = 'Does Frequency Follow Wound Protocol?:<'+protocol+'>Frequency Protocol Comments:<'+protocol_no+'>Discharge Status:<'+discharge_stat+'>Describe ongoing needs and recommendations:<'+desc_ongoing+'>Physician Notified of Discharge:<'+physician+'>Goals Met:<'+GoalMet+'><'+nogoal_desc+'>Discharged To:<'+discharged_to+'>Last Visit Date:<'+last_visit+'>Discharge Date:<'+discharg_date+'>';
 
 			output_service = output_service + discharg_field;
 		}		
@@ -2662,7 +2871,20 @@ $('#btn_additional_submit').click(function() {
 });
 
 
-// function SelectAll(id)
+select_lhin = $("#select_lhin").val();
+
+if (select_lhin == '1') {
+	$(".btn_output_fst").attr('id', $(this).text('btn_additional_1st'));
+}
+if (select_lhin == '2') {
+	$(".btn_output_fst").attr('id', 'btn_additional_1st_wound');
+}
+if (select_lhin == '3') {
+	$(".btn_output_fst").attr('id', 'btn_additional_1st_therapy');
+}
+
+
+// function SelectAll(id) btn_output_fst
 // {
 //     document.getElementById(id).focus();
 //     document.getElementById(id).select();
